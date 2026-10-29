@@ -4,7 +4,7 @@ options {timestamps()}
 stages {
 stage('Cloner le dépôt'){
 steps {
-git url: 'https://github.com/sondossoua123-ctrl/projetJenkins.git', branch: 'main'
+git url: 'https://github.com/sondossoua123-ctrl/mon-projet.git', branch: 'main'
 }
 }
 stage('Étape 1 : Vérification du dépôt'){
