@@ -18,10 +18,11 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'echo Afficher le contenu du projet'
-                bat 'dir'
+                sh 'grep -q "html" index.html'
+                sh 'grep -q "<h1>" index.html'
             }
         }
+
 
         stage('Delivery') {
             steps {
