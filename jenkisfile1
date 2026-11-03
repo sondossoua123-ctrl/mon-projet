@@ -1,29 +1,44 @@
 pipeline {
-agent any
-stages {
-stage('Check out'){
-steps {
-echo 'Vérifier l'url'
-git url: 'https://github.com/sondossoua123-ctrl/mon-projet.git', branch: 'main'
-}
-}
-stage('Build'){
-steps {
-bat 'echo Vérification du dépôt '
-bat 'git status'
-}
-}
-stage('Test') {
-steps {
-bat 'echo Afficher le contenu du projet'
-bat 'dir'
-}
-}
-stage('Delivery') {
-steps {
-bat 'echo  Simuler un déploiement local '
-bat 'echo Le fichier index.html est prêt à être affiché'
-}
+    agent any
+
+    stages {
+        stage('Check out') {
+            steps {
+                echo "Vérifier l'url"
+                git url: 'https://github.com/sondossoua123-ctrl/mon-projet.git', branch: 'main'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'echo Vérification du dépôt'
+                bat 'git status'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'echo Afficher le contenu du projet'
+                bat 'dir'
+            }
+        }
+
+        stage('Delivery') {
+            steps {
+                bat 'echo Simuler un déploiement local'
+                bat 'echo Le fichier index.html est prêt à être affiché'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build OK'
+        }
+        failure {
+            echo 'Build KO'
+        }
+    }
 }
 }
 post {
